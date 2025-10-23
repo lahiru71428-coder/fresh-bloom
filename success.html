@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Successful - Fresh Bloom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .success-container {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 40px;
+      text-align: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .success-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      animation: scaleIn 0.5s ease-out;
+    }
+    
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    
+    .success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #2d3436;
+      margin-bottom: 15px;
+    }
+    
+    .success-message {
+      font-size: 1.1rem;
+      color: #636e72;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .order-id {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      font-family: monospace;
+      font-size: 1rem;
+      color: #2d3436;
+    }
+    
+    .success-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+    
+    .btn-secondary:hover {
+      background: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="logo">Fresh <span>Bloom</span></div>
+      <ul>
+        <li><a href="THE REAL PROJECT.html#home">HOME</a></li>
+        <li><a href="THE REAL PROJECT.html#shop">FLOWERS</a></li>
+        <li><a href="THE REAL PROJECT.html#features">ABOUT</a></li>
+        <li><a href="THE REAL PROJECT.html#newsletter">CONTACT</a></li>
+      </ul>
+      <div class="nav-icons">
+        <button class="icon-btn" onclick="goToCart()">🛒
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <button class="icon-btn" onclick="openLoginModal()">👤</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="success-container">
+    <div class="success-icon">✓</div>
+    <h1 class="success-title">Payment Successful!</h1>
+    <p class="success-message">
+      Thank you for your order. Your payment has been processed successfully.<br>
+      You will receive a confirmation email shortly with your order details.
+    </p>
+    <div class="order-id" id="orderId">
+      Order ID: Loading...
+    </div>
+    <div class="success-buttons">
+      <a href="THE REAL PROJECT.html" class="btn btn-primary">Continue Shopping</a>
+      <a href="#" onclick="window.print(); return false;" class="btn btn-secondary">Print Receipt</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Fresh Bloom</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6;">Delivering luxury floral experiences since 2025. We believe every occasion deserves premium, handcrafted arrangements.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Occasions</a></li>
+          <li><a href="#">Corporate Gifts</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Customer Service</h3>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Fresh Bloom. All rights reserved. | Premium Floral Arrangements</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Get session ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
+    
+    if (sessionId) {
+      document.getElementById('orderId').textContent = `Order ID: ${sessionId.substring(0, 20)}...`;
+      
+      // Clear cart after successful payment
+      localStorage.removeItem('flowerCart');
+      
+      // Update cart badge
+      const badge = document.getElementById('cartBadge');
+      if (badge) {
+        badge.textContent = '0';
+      }
+    } else {
+      document.getElementById('orderId').textContent = 'Order ID: Not available';
+    }
+    
+    function goToCart() {
+      window.location.href = 'cart.html';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.6.0"
+    }
+  },
+  "routes": [
+    { "src": "/create-checkout-session.php", "dest": "/api/create-checkout-session.php" },
+    { "src": "/webhook.php", "dest": "/api/webhook.php" }
+  ]
+}

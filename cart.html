@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - Fresh Bloom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cart-style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="logo">Fresh <span>Bloom</span></div>
+      <ul>
+        <li><a href="THE REAL PROJECT.html#home">HOME</a></li>
+        <li><a href="THE REAL PROJECT.html#shop">FLOWERS</a></li>
+        <li><a href="THE REAL PROJECT.html#features">ABOUT</a></li>
+        <li><a href="THE REAL PROJECT.html#newsletter">CONTACT</a></li>
+      </ul>
+      <div class="nav-icons">
+        <button class="icon-btn" onclick="toggleCart()">🛒
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <button class="icon-btn" onclick="openLoginModal()">👤</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="cart-section">
+    <div class="cart-container">
+      <h1 class="cart-title">Shopping Cart</h1>
+      
+      <div id="emptyCartMessage" class="empty-cart" style="display: none;">
+        <div class="empty-cart-icon">🛒</div>
+        <h2>Your cart is empty</h2>
+        <p>Add some beautiful flowers to your cart!</p>
+        <a href="THE REAL PROJECT.html#shop" class="cta-btn">Continue Shopping</a>
+      </div>
+
+      <div id="cartContent" class="cart-content">
+        <div class="cart-items" id="cartItems"></div>
+        
+        <div class="cart-summary">
+          <h2>Order Summary</h2>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="total">LKR 0.00</span>
+          </div>
+          <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+          <a href="THE REAL PROJECT.html#shop" class="continue-shopping">Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Fresh Bloom</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6;">Delivering luxury floral experiences since 2025. We believe every occasion deserves premium, handcrafted arrangements.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Occasions</a></li>
+          <li><a href="#">Corporate Gifts</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Customer Service</h3>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Fresh Bloom. All rights reserved. | Premium Floral Arrangements</p>
+    </div>
+  </footer>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <h2>Access Your Account</h2>
+      
+      <div class="modal-tabs">
+        <button class="modal-tabs-btn active" onclick="showCustomerLogin()">Customer</button>
+        <button class="modal-tabs-btn" onclick="showAdminLogin()">Admin</button>
+      </div>
+
+      <form class="modal-form" id="customerForm" style="display: none;">
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Sign In</button>
+      </form>
+
+      <form class="modal-form" id="adminForm" style="display: none;">
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Admin Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="cart.js"></script>
+
+</body>
+</html>
