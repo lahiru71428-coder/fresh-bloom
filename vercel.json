@@ -1,11 +1,13 @@
 {
   "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@1.0.0"
+    "api/*.js": {
+      "runtime": "nodejs20.x"
     }
   },
   "routes": [
-    { "src": "/create-checkout-session.php", "dest": "/api/create-checkout-session.php" },
-    { "src": "/webhook.php", "dest": "/api/webhook.php" }
+    { "src": "/create-checkout-session.php", "dest": "/api/create-checkout-session" },
+    { "src": "/webhook.php", "dest": "/api/webhook" },
+    { "src": "/create-checkout-session", "dest": "/api/create-checkout-session" },
+    { "src": "/webhook", "dest": "/api/webhook" }
   ]
 }

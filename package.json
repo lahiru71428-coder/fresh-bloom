@@ -1,0 +1,17 @@
+{
+  "name": "fresh-bloom",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Fresh Bloom backend (Node.js on Vercel)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
